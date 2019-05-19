@@ -1,0 +1,157 @@
+/*
+ * ress.css • v1.2.2
+ * MIT License
+ * github.com/filipelinhares/ress
+ */
+
+/*
+ * Fix
+ * Version 0.1.1
+ * https://github.com/jaydenseric/Fix
+*/
+
+/* # =================================================================
+   # Global selectors
+   # ================================================================= */
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow-y: scroll; // All browsers without overlaying scrollbars
+    -webkit-text-size-adjust: 100%; // iOS 8+
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 62.5%;
+}
+
+*,
+::before,
+::after {
+    background-repeat: no-repeat; // Set `background-repeat: no-repeat` to all elements and pseudo elements */
+    box-sizing: inherit;
+}
+
+::before,
+::after {
+    text-decoration: inherit; // Inherit text-decoration and vertical align to ::before and ::after pseudo elements
+    vertical-align: inherit;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* # =================================================================
+   # General elements
+   # ================================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    font-size: inherit;
+    text-rendering: optimizeLegibility;
+    font-weight: 400;
+}
+
+ul { list-style: none; }
+
+/*
+* Correct `block` display not defined for any HTML5 element in IE 8/9
+* Correct `block` display not defined for `details` or `summary` in IE 10/11
+* and Firefox
+* Correct `block` display not defined for `main` in IE 11
+*/
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+    display: block;
+}
+
+[hidden],
+template {
+    display: none; // Add the correct display in IE
+}
+
+abbr[title] {
+    border-bottom: 1px dotted; // Add a bordered underline effect in all browsers
+    text-decoration: none; // Remove text decoration in Firefox 40+ */
+}
+
+a {
+    background-color: transparent; // Remove the gray background on active links in IE 10
+    -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+
+    text-decoration: none;
+    color: inherit;
+}
+
+a:active,
+a:hover {
+    outline-width: 0;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family:  "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; // Specify the font family of code elements
+}
+
+strong {
+    font-weight: 700;
+}
+
+
+/* # =================================================================
+   # Specify media element style
+   # ================================================================= */
+
+img {
+    border-style: none; // Remove border when inside `a` element in IE 8/9/10
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+svg:not(:root) {
+    overflow: hidden; // Internet Explorer 11-
+}
+
+::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+
+/* # =================================================================
+   # Selection
+   # ================================================================= */
+
+
+/* Specify text selection background color and omit drop shadow */
+
+::-moz-selection {
+    background-color: #b3d4fc; // Required when declaring ::selection
+    color: #000;
+    text-shadow: none;
+}
+
+::selection {
+    background-color: #b3d4fc; // Required when declaring ::selection
+    color: #000;
+    text-shadow: none;
+}

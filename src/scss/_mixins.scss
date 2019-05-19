@@ -1,0 +1,51 @@
+// Media Queries
+
+// Breakpoints
+
+$bp-portrait-smartphone: 360px; // largura minima smartphone
+$bp-landscape-smartphone: 640px;
+
+$bp-min-tablet: 600px; // largura minima tablet 7"
+$bp-med-tablet: 768px; // largura minima tablet ipad
+
+$bp-min-desktop: 980px; // largura minima desktop
+$bp-med-desktop: 1200px; // largura notebook
+$bp-wide-desktop: 1366px; // largura notebook e TV
+
+@mixin respond-to($media) {
+    @if $media == small {
+        @media only screen and (max-width: $bp-min-tablet) { // até 600px
+            @content;
+        }
+    }
+    @else if $media == medium {
+        @media only screen and (min-width: $bp-min-tablet + 1) { // acima de 601px
+            @content;
+        }
+    }
+    @else if $media == landscape {
+        @media only screen and (min-width: $bp-landscape-smartphone + 1) { // acima de 640px + 1
+            @content;
+        }
+    }
+    @else if $media == tablet {
+        @media only screen and (min-width: $bp-med-tablet + 1) { // acima de 768px + 1
+            @content;
+        }
+    }
+    @else if $media == desktop {
+        @media only screen and (min-width: $bp-min-desktop + 1) { // acima de 980px + 1
+            @content;
+        }
+    }
+    @else if $media == notebook {
+        @media only screen and (min-width: $bp-med-desktop + 1) { // acima de 1200px + 1
+            @content;
+        }
+    }
+    @else if $media == wide {
+        @media only screen and (min-width: $bp-wide-desktop + 1) { // acima de 1366px + 1
+            @content;
+        }
+    }
+}

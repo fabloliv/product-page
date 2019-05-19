@@ -1,0 +1,585 @@
+// Functional color variables
+
+
+// Font stack
+$font-stack: "Raleway", "Lucida Grande", Helvetica, sans-serif !default;
+
+$main-color: #4ec2dd; // azul
+$secondary-color: #0f4156; // azul escuro
+$text-color: #c8c8c8; // texto cinza
+
+// Functions
+@function em($pixels, $context) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return $pixels / $context * 1em;
+}
+
+body {
+    font-size: 10px;
+    font-size: 1rem;
+    line-height: 1em;
+    font-weight: 400;
+    font-family: $font-stack;
+    color: $text-color;
+}
+
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    max-width: 980px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* # =================================================================
+   # Top
+   # ================================================================= */
+
+.top-container {
+    border-bottom: 1px $text-color solid;
+    .wrapper {
+        padding-top: 18px;
+        padding-bottom: 15px;
+    }
+}
+
+.top-logo {
+    width: 65px;
+    height: auto;
+    float: left;
+    @include respond-to(desktop) {
+        width: 85px;
+    }
+}
+
+.top-nav {
+    text-align: center;
+    line-height: 42px;
+
+    @include respond-to(medium) {
+        float: left;
+        width: 40%;
+        line-height: 55px;
+    }
+    
+    @include respond-to(desktop) {
+        width: 420px;
+    }
+
+    li {
+        margin: 0 6px 0 0;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    a {
+        font-weight: 800;
+        color: $main-color;
+        font-size: em(16, 10);
+        padding: 3px 6px;
+        line-height: 1em;
+        display: block;
+        border-radius: 5px;
+
+        @include respond-to(desktop) {
+            font-size: em(20, 10);
+        }
+
+        &:hover {
+            background-color: $main-color;
+            color: #fff;
+        }       
+    }
+}
+
+.cart {
+    position: relative;
+    float: right;
+    width: 36px;
+    height: 40px;
+    margin: 15px 10px 0 0;
+    background: transparent url("/assets/img/icon_cart.png") 0 0 no-repeat;
+
+    @include respond-to(medium) {
+        margin: 5px 10px 0 0;
+    }
+
+    span {
+        text-align: center;
+        background-color: $main-color;
+        color: #fff;
+        font-weight: 800;
+        font-size: em(12, 10);
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        display: block;
+        border-radius: 50%;
+        position: absolute;
+        top: -3px;
+        right: -7px;
+
+        @include respond-to(desktop) {
+            font-size: em(14, 10);
+        }
+    }
+}
+
+.top-search {
+    width: 82%;
+    height: 5em;
+    margin-top: 1em;
+
+    background: #fff url("/assets/img/icon_top_search.png") 20px center no-repeat;
+    border-radius: 7px;
+
+    -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
+    
+    @include respond-to(medium) {
+        float: left;
+        width: 38%;
+        margin-top: 0;
+    }
+
+    @include respond-to(desktop) {
+        width: 360px;
+        margin-top: 0;
+    }
+    
+    input {
+        font-size: em(16, 10);
+        color: #ccc;
+        border: none;
+        background: none;
+        padding: em(5px, 16);
+        width: 77%;
+        line-height: 1em;
+        margin: 13px 0 0 55px;
+
+        &:focus {
+            color: #666;
+            font-weight: 700;
+            outline: none;
+        }
+    }
+}
+
+/* # =================================================================
+   # Content
+   # ================================================================= */
+
+.breadcrumb-container {
+    .wrapper {
+        height: 70px;
+        line-height: 70px; // centralizar conteúdo vertical 
+    }
+}
+
+.breadcrumb {
+    font-weight: 800;
+    font-size: em(13, 10);
+    display: inline-block; // centraliza elemento
+    vertical-align: middle;
+    line-height: normal;
+    
+    a {
+        display: inline-block;
+        padding: 5px;
+        margin-right: 10px;
+        margin-left: 10px;
+
+        &:first-child{
+            margin-left: 0;
+        };
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    span {
+        color: $main-color;
+        display: inline-block;
+        padding: 5px;
+        margin-left: 10px;
+    }
+}
+
+.content-container {}
+
+.feature-prod, .img-prod {}
+
+.feature-prod {
+    @include respond-to(medium) {
+        float: right;
+        width: 50%;
+    }
+    .title {
+        font-size: em(26, 10);
+        line-height: em(34, 26);
+        padding-bottom: em(20, 26);
+        text-align: center;
+
+        @include respond-to(landscape) {
+            font-size: 3.2em;
+            line-height: em(40, 32);
+            padding-left: em(25, 32);
+            padding-bottom: em(30, 32);
+            text-align: left;
+        }
+    }
+}
+
+.price-box {
+    padding: 15px;
+    background-color: #f8f8f8;
+    text-align: center;
+
+    @include respond-to(landscape) {
+        padding: 18px 20px 18px 25px;
+        text-align: left;
+    }
+    .old {
+        font-size: 1.6em;
+        line-height: 1em;
+    }
+    .price {
+        font-size: em(28, 10);
+        color: $main-color;
+        font-weight: 800;
+        line-height: 1em;
+        padding: 7px 0 18px;
+    }
+    .buy-btn {
+        font-weight: 800;
+        font-size: em(18, 10);
+        color: #fff;
+        background-color: #66cc33;
+        border: none;
+        padding: 10px 15px;
+        line-height: 1em;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        border-radius: 5px;
+        box-shadow: 0px 2px 1px 0 rgba(0, 0, 0, 0.3);
+        &:hover {
+            background-color: darken(#66cc33, 5%);
+        }
+    }
+}
+
+.shipping-form {
+    background-color: $main-color;
+    color: #fff;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    border-radius: 5px;
+
+    @include respond-to(landscape) {
+        padding: 20px;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    legend {
+        font-weight: 800;
+        font-size: em(14, 10);
+        text-transform: uppercase;
+        display: block;
+        line-height: 1em;
+        margin-bottom: 15px;
+
+        @include respond-to(landscape) {
+            font-size: em(16, 10);
+        }
+    }
+
+    .sf-input {
+        float: left;
+        margin-right: 10px;
+        padding: 10px;
+        text-align: center;
+        line-height: 1em;
+        border: none;
+        border-radius: 5px;
+        font-size: em(16, 10);
+    }
+    .sf-field {
+        background-color: #fff;
+        width: 19%;
+        letter-spacing: em(1, 16);
+        color: #ccc;
+
+        &:focus {
+            color: #666;
+            font-weight: 700;
+            outline: none;
+        }
+    }
+    .sf-subsetor {
+        text-align: left;
+        width: 35%;
+    }
+
+    .sf-submit {
+        background-color: $secondary-color;
+        color: #fff;
+        font-weight: 800;
+        padding: 10px 18px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: lighten($secondary-color, 10%);
+        }
+    }
+}
+.img-prod {
+    text-align: center;
+
+    @include respond-to(medium) {
+        width: 50%;
+        text-align: left;
+    }
+    .img-thumb, .img-full {
+        border: 1px #ccc solid;
+    }
+
+    .img-full {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include respond-to(medium) {
+            float: right;
+            width: 83.3333%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+    .img-thumb {
+        width: 20%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        @include respond-to(medium) {
+            width: 13.3333%;
+            margin-right: 3.3333%;
+            margin-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.description-container {
+    font-size: em(16, 10);
+    line-height: 160%;
+    p {
+        margin: 0 0 em(20, 16) 0;
+    }
+    h3 {
+        color: $secondary-color;
+        font-size: 22px;
+        text-align: center;
+        line-height: 4em;
+        @include respond-to(medium) {
+            font-size: 28px;
+        }
+    }
+}
+
+.related-container {
+    text-align: center;
+    padding: 3em;
+}
+
+.prod-rel {
+    background-color: #f8f8f8; 
+    padding: 10px;
+    color: #999;
+    margin: 10px;
+    display: inline-block;
+
+    @include respond-to(medium) {
+        margin: 10px 5px;
+        text-align: left;
+        width: 31%;
+        vertical-align: top;
+    }
+    @include respond-to(landscape) {
+        width: 28%;
+    }
+}
+    .rel-prod-img {
+        display: block;
+        width: 70%;
+        margin: 0 auto 10px;
+
+        @include respond-to(medium) {
+            width: auto;
+        }
+    }
+    .rel-prod-title{
+        font-size: em(12, 10);
+        line-height: 140%;
+        height: 70px;
+
+        @include respond-to(landscape) {
+            font-size: em(14, 10);
+            line-height: 150%;
+            height: 80px;
+        }
+
+        a {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .rel-price-box {
+        margin-bottom: 20px;
+        .old {
+            font-size: em(14, 10);
+            display: block;
+            line-height: 1em;
+            margin-bottom: 7px;
+        }
+        .now {
+            font-size: em(18, 10);
+            font-weight: 800;
+            line-height: 1em;
+            color: $main-color;
+        }
+    }
+
+/* # =================================================================
+   # Footer
+   # ================================================================= */
+
+.footer-container {
+    $footer-height: 70px;
+    height: $footer-height;
+    line-height: $footer-height;
+
+    background-color: $main-color;
+    position: relative;
+
+    @include respond-to(desktop) {
+        $footer-height: 105px;
+        height: $footer-height;
+        line-height: $footer-height;
+    }
+    .footer-logo {
+        position: relative;
+        float: left;
+        background-color: $secondary-color;
+        text-align: right;
+        width: 20%;
+        padding-right: 15px;
+        height: 100%;   
+
+        @include respond-to(desktop) {
+            padding-right: 35px;
+        }
+        @include respond-to(notebook) {
+            width: 25%;
+        }
+
+        a {
+            display: inline-block; // centraliza elemento
+            vertical-align: middle;
+            line-height: normal;
+            width: 54px;
+            height: auto;
+            @include respond-to(desktop) {
+                width: 86px;
+                height: 54px;
+            }   
+        }
+    }
+
+    .copyright {
+        color: #fff;
+        font-size: em(13, 10);
+        padding: 0 0 0 15px;
+        display: inline-block;
+        display: inline-block; // centraliza elemento
+        vertical-align: middle;
+        line-height: normal;
+        @include respond-to(desktop) {
+            font-size: em(14, 10);
+            padding: 0 0 0 35px;
+        }
+        a {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+/* # =================================================================
+   # Modal
+   # ================================================================= */
+
+#overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.42;
+    filter: alpha(opacity=42);
+}
+
+#modal {
+    position:absolute;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    width: 300px;
+    background-color: #fff;
+}
+
+#content {
+    background: #fff url("/assets/img/icon_img_success.png") center 30% no-repeat;
+    padding: 160px 0 5px 0;
+
+    p {
+        color: $main-color;
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 140%;
+    }
+}
+
+#close {
+    background-color: $secondary-color;
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 0 20px;
+    border-radius: 3px;
+    line-height: 2.3em;
+    width: 33%;
+    margin: 35px auto;
+
+    &:hover {
+        background-color: lighten($secondary-color, 10);
+    }
+}
