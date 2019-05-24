@@ -105,7 +105,7 @@ body {
     width: 36px;
     height: 40px;
     margin: 15px 10px 0 0;
-    background: transparent url("/assets/img/icon_cart.png") 0 0 no-repeat;
+    background: transparent url("../img/icon_cart.png") 0 0 no-repeat;
 
     @include respond-to(medium) {
         margin: 5px 10px 0 0;
@@ -137,7 +137,7 @@ body {
     height: 5em;
     margin-top: 1em;
 
-    background: #fff url("/assets/img/icon_top_search.png") 20px center no-repeat;
+    background: #fff url("../img/icon_top_search.png") 20px center no-repeat;
     border-radius: 7px;
 
     -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
@@ -556,7 +556,7 @@ body {
 }
 
 #content {
-    background: #fff url("/assets/img/icon_img_success.png") center 30% no-repeat;
+    background: #fff url("../img/icon_img_success.png") center 30% no-repeat;
     padding: 160px 0 5px 0;
 
     p {
