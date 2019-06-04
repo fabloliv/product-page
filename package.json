@@ -9,10 +9,10 @@
   "keywords": [],
   "author": "Fabrício Oliveira <fabriciololiveira@gmail.com>",
   "devDependencies": {
-    "browser-sync": "^2.18.13",
-    "gulp": "^3.9.1",
-    "gulp-imagemin": "^3.4.0",
-    "gulp-sass": "^3.1.0"
+    "browser-sync": "^2.26.5",
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-sass": "^4.0.2"
   },
   "license": "ISC"
 }
