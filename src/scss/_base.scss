@@ -4,9 +4,10 @@
 // Font stack
 $font-stack: "Raleway", "Lucida Grande", Helvetica, sans-serif !default;
 
-$main-color: #4ec2dd; // azul
-$secondary-color: #0f4156; // azul escuro
-$text-color: #c8c8c8; // texto cinza
+$main-color: #23c0ec;
+$secondary-color: #0c061e;
+$text-color: #888; // texto
+$highlight-color: #e70388;
 
 // Functions
 @function em($pixels, $context) {
@@ -69,7 +70,7 @@ body {
         width: 40%;
         line-height: 55px;
     }
-    
+
     @include respond-to(desktop) {
         width: 420px;
     }
@@ -95,7 +96,7 @@ body {
         &:hover {
             background-color: $main-color;
             color: #fff;
-        }       
+        }
     }
 }
 
@@ -113,7 +114,7 @@ body {
 
     span {
         text-align: center;
-        background-color: $main-color;
+        background-color: $highlight-color;
         color: #fff;
         font-weight: 800;
         font-size: em(12, 10);
@@ -143,7 +144,7 @@ body {
     -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
-    
+
     @include respond-to(medium) {
         float: left;
         width: 38%;
@@ -154,7 +155,7 @@ body {
         width: 360px;
         margin-top: 0;
     }
-    
+
     input {
         font-size: em(16, 10);
         color: #ccc;
@@ -180,7 +181,7 @@ body {
 .breadcrumb-container {
     .wrapper {
         height: 70px;
-        line-height: 70px; // centralizar conteúdo vertical 
+        line-height: 70px; // centralizar conteúdo vertical
     }
 }
 
@@ -190,7 +191,7 @@ body {
     display: inline-block; // centraliza elemento
     vertical-align: middle;
     line-height: normal;
-    
+
     a {
         display: inline-block;
         padding: 5px;
@@ -407,7 +408,7 @@ body {
 }
 
 .prod-rel {
-    background-color: #f8f8f8; 
+    background-color: #f8f8f8;
     padding: 10px;
     color: #999;
     margin: 10px;
@@ -489,7 +490,7 @@ body {
         text-align: right;
         width: 20%;
         padding-right: 15px;
-        height: 100%;   
+        height: 100%;
 
         @include respond-to(desktop) {
             padding-right: 35px;
@@ -507,7 +508,7 @@ body {
             @include respond-to(desktop) {
                 width: 86px;
                 height: 54px;
-            }   
+            }
         }
     }
 
@@ -536,7 +537,7 @@ body {
    # ================================================================= */
 
 #overlay {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
