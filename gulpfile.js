@@ -1,37 +1,76 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var imagemin = require('gulp-imagemin');
-var browserSync = require('browser-sync').create();
+// Initialize modules
+// Importing specific gulp API functions lets us write them below as series() instead of gulp.series()
+const { src, dest, watch, parallel, series } = require('gulp');
 
-gulp.task('sass', function() {
-    return gulp.src('src/scss/**/*.scss')
-        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-        .pipe(gulp.dest('assets/css'))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
-});
+// Importing all the Gulp-related packages we want to use
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const imagemin = require('gulp-imagemin');
+const browsersync = require('browser-sync').create();
 
-gulp.task('browserSync', function() {
-    browserSync.init({
+// File paths
+const files = {
+    scssPath: 'src/scss/**/*.scss',
+    cssPath: 'assets/css',
+    imgPath: 'src/img/**/*',
+    imgMinPath: 'assets/img',
+    htmlPath: './*.html',
+    jsPath: 'src/js/**/*.js'
+}
+
+// Sass task: compiles the style.scss file into style.css
+// sass default task
+function sassDefault (){
+    return src(files.scssPath)
+        .pipe(sourcemaps.init()) // initialize sourcemaps first
+        .pipe(sass().on('error', sass.logError)) // compile SCSS to CSS
+        // .pipe(postcss([ autoprefixer(), cssnano() ])) // PostCSS plugins
+        .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
+        .pipe(dest(files.cssPath)
+    ); // put final CSS in dist folder
+}
+
+// sass deploy task
+function sassDeploy (){
+    return src(files.scssPath)
+        .pipe(sass().on('error', sass.logError)) // compile SCSS to CSS
+        .pipe(postcss([ autoprefixer(), cssnano() ])) // PostCSS plugins
+        .pipe(dest(files.cssPath)
+    ); // put final CSS in dist folder
+}
+
+// Init BrowserSync
+function bsInit() {
+    browsersync.init({
         server: {
             baseDir: './'
         },
-    })
-});
+    });
+};
 
-gulp.task('imgmin', function(){
-  return gulp.src('src/img/**/*.+(png|jpg|gif|svg)')
-  .pipe(imagemin({
-    verbose: true
-  }))
-  .pipe(gulp.dest('assets/img'))
-});
+// BrowserSync Reload
+function bsReload(done) {
+    browsersync.reload();
+    done(); // need a callback
+}
 
-gulp.task('serve', gulp.series(['browserSync', 'imgmin', 'sass'], function() {
-    gulp.watch('src/img/**/*.+(png|jpg|gif|svg)', gulp.parallel(['imgmin']));
-    gulp.watch('src/scss/**/*.scss', gulp.parallel(['sass']));
-    gulp.watch('./*.html', browserSync.reload);
-}));
+// Minify images
+function imgMinify() {
+    return src(files.imgPath)
+        .pipe(imagemin({ verbose: true }))
+        .pipe(dest(files.imgMinPath))
+};
 
-gulp.task('default', gulp.series('serve'));
+function watchFiles() {
+    watch(files.scssPath, series(sassDefault, bsReload)); // sass
+    watch(files.imgPath, series(imgMinify, bsReload)); // img
+    watch(files.htmlPath, series(bsReload)); // html
+}
+
+// exports.build = build;
+//exports.default = series(imgMinify, sassDeploy);
+
+exports.watch = parallel(bsInit, watchFiles);
