@@ -1,21 +1,26 @@
 {
-  "name": "teste-N1",
+  "name": "product-page",
   "version": "1.0.0",
-  "description": "",
+  "description": "Experimental app.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabloliv/product-page.git"
+  },
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Fabrício Oliveira <fabriciololiveira@gmail.com>",
+  "author": "Fabrício Oliveira <fabriciololiveira@gmail.com> (http://fabriciolo.com/)",
   "devDependencies": {
-    "browser-sync": "^2.26.5",
+    "autoprefixer": "^9.6.0",
+    "browser-sync": "^2.26.7",
+    "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
     "gulp-imagemin": "^6.0.0",
-    "gulp-sass": "^4.0.2"
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5"
   },
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.19.0"
-  }
+  "license": "ISC"
 }
